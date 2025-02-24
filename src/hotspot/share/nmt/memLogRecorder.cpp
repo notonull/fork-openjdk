@@ -1018,4 +1018,8 @@ void NMT_VirtualMemoryLogRecorder::record_virtual_memory_tag(void* addr, MemTag 
   NMT_VirtualMemoryLogRecorder::_record(Type::TAG, mem_tag, mtNone, 0, 0, (address)addr, nullptr);
 }
 
+#else
+
+// TODO: Windows impl
+
 #endif // if defined(LINUX) || defined(__APPLE__)
