@@ -42,6 +42,8 @@
 //
 // NMTBenchmarkRecordedPID=22770 ./build/macosx-aarch64-server-release/xcode/build/jdk/bin/java -XX:+UnlockDiagnosticVMOptions -XX:NativeMemoryTracking=summary
 
+#if defined(LINUX) || defined(__APPLE__)
+
 #include "precompiled.hpp"
 #include "jvm.h"
 #include "nmt/nmtCommon.hpp"
@@ -1015,3 +1017,5 @@ void NMT_VirtualMemoryLogRecorder::record_virtual_memory_split_reserved(void* ad
 void NMT_VirtualMemoryLogRecorder::record_virtual_memory_tag(void* addr, MemTag mem_tag) {
   NMT_VirtualMemoryLogRecorder::_record(Type::TAG, mem_tag, mtNone, 0, 0, (address)addr, nullptr);
 }
+
+#endif // if defined(LINUX) || defined(__APPLE__)

@@ -25,6 +25,8 @@
 #ifndef SHARE_NMT_MEMLOGRECORDER_HPP
 #define SHARE_NMT_MEMLOGRECORDER_HPP
 
+#if defined(LINUX) || defined(__APPLE__)
+
 #include "memory/allocation.hpp"
 #include "nmt/nmtCommon.hpp"
 #include "runtime/globals.hpp"
@@ -155,5 +157,7 @@ public:
 private:
   static void _record(NMT_VirtualMemoryLogRecorder::Type type, MemTag mem_tag, MemTag mem_tag_split, size_t size, size_t size_split, address ptr, const NativeCallStack *stack);
 };
+
+#endif // if defined(LINUX) || defined(__APPLE__)
 
 #endif // SHARE_NMT_MEMLOGRECORDER_HPP
