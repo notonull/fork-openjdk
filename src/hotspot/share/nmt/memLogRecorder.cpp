@@ -742,7 +742,7 @@ void NMT_MemoryLogRecorder::_record(MemTag mem_tag, size_t requested, address pt
         entry.actual = NMT_LogRecorder::mallocSize(ptr);
       }
 
-      entry.mem_tag = (jlong)mem_tag;
+      entry.mem_tag = (long int)mem_tag;
       if ((MemTracker::is_initialized()) && (stack != nullptr)) {
         // recording stack frames will make sure that the hashtables
         // are used, so they get benchmarked as well
@@ -947,6 +947,8 @@ void NMT_VirtualMemoryLogRecorder::replay(const int pid) {
 //    }
 
   _close_and_check(records_fi.fd);
+
+  os::exit(0);
 }
 
 void NMT_VirtualMemoryLogRecorder::_record(NMT_VirtualMemoryLogRecorder::Type type, MemTag mem_tag, MemTag mem_tag_split, size_t size, size_t size_split, address ptr, const NativeCallStack *stack) {
@@ -965,8 +967,8 @@ void NMT_VirtualMemoryLogRecorder::_record(NMT_VirtualMemoryLogRecorder::Type ty
       }
       entry.thread = NMT_LogRecorder::thread_id();
       entry.ptr = ptr;
-      entry.mem_tag = (jlong)mem_tag;
-      entry.mem_tag_split = (jlong)mem_tag_split;
+      entry.mem_tag = (long int)mem_tag;
+      entry.mem_tag_split = (long int)mem_tag_split;
       entry.size = size;
       entry.size_split = size_split;
       if ((MemTracker::is_initialized()) && (stack != nullptr)) {

@@ -81,14 +81,14 @@ private:
 
 private:
     struct Entry {
-    jlong time;
+    long int time;
     intx thread;
     address ptr;
     address old;
     address stack[NMT_TrackingStackDepth];
     size_t requested;
     size_t actual;
-    jlong mem_tag;
+    long int mem_tag;
   };
 
 public:
@@ -117,12 +117,12 @@ private:
 
 private:
   struct Entry {
-    jlong time;
+    long int time;
     intx thread;
     address ptr;
     address stack[NMT_TrackingStackDepth];
-    jlong mem_tag;
-    jlong mem_tag_split;
+    long int mem_tag;
+    long int mem_tag_split;
     size_t size;
     size_t size_split;
     int type;
