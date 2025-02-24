@@ -42,8 +42,6 @@
 //
 // NMTBenchmarkRecordedPID=22770 ./build/macosx-aarch64-server-release/xcode/build/jdk/bin/java -XX:+UnlockDiagnosticVMOptions -XX:NativeMemoryTracking=summary
 
-#if defined(LINUX) || defined(__APPLE__)
-
 #include "precompiled.hpp"
 #include "jvm.h"
 #include "nmt/nmtCommon.hpp"
@@ -61,6 +59,8 @@
 #include "utilities/nativeCallStack.hpp"
 #include "utilities/permitForbiddenFunctions.hpp"
 #include "utilities/vmError.hpp"
+
+#if defined(LINUX) || defined(__APPLE__)
 
 #include <locale.h>
 #include <string.h>
